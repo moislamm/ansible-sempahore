@@ -1,0 +1,12 @@
+---
+  - name: test
+    hosts: linux
+
+    gather_facts: yes
+    become: true
+
+    tasks:
+      - name: APT update and upgrade
+        apt:
+          upgrade: yes
+          update_cache: yes
