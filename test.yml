@@ -7,6 +7,4 @@
 
     tasks:
       - name: APT update and upgrade
-        apt:
-          upgrade: yes
-          update_cache: yes
+        apt: state=latest force_apt_get=yes
