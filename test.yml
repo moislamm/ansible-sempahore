@@ -12,14 +12,7 @@
         config:
           - server: 192.168.0.1
           - source_interface: Loopback0
-    
-    
-    - name: Configure VLANs
-      cisco.ios.ios_vlan:
-        vlan_id: 10
-        name: Sales
-        state: present
-    
+        
     - name: Save the configuration
       cisco.ios.ios_config:
         save_when: modified
