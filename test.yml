@@ -13,11 +13,6 @@
           - server: 192.168.0.1
           - source_interface: Loopback0
     
-    - name: Configure logging
-      ios_logging:
-          dest: host
-          name: 172.16.0.1
-          state: present
     
     - name: Configure VLANs
       cisco.ios.ios_vlan:
