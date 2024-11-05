@@ -13,12 +13,6 @@
           - server: 192.168.0.1
           - source_interface: Loopback0
     
-    - name: Configure SNMP community string
-      cisco.ios.ios_snmp:
-        community:
-          - name: public
-          - mode: ro
-    
     - name: Configure logging
       cisco.ios.ios_logging:
         logging: 192.168.1.100
