@@ -1,10 +1,41 @@
 ---
-  - name: test
-    hosts: linux
-
-    gather_facts: yes
-    become: true
-
-    tasks:
-      - name: APT update and upgrade
-        apt: state=latest force_apt_get=yes
+- name: Enforce Cisco config baseline
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Set hostname
+      cisco.ios.ios_system:
+        hostname: Router-01
+    
+    - name: Configure NTP
+      cisco.ios.ios_ntp:
+        config:
+          - server: 192.168.0.1
+          - source_interface: Loopback0
+    
+    - name: Set interface descriptions
+      cisco.ios.ios_interface:
+        name: Ethernet0/0
+        description: 'Uplink to ISP'
+        enabled: true
+    
+    - name: Configure SNMP community string
+      cisco.ios.ios_snmp:
+        community:
+          name: public
+          mode: ro
+    
+    - name: Configure logging
+      cisco.ios.ios_logging:
+        logging: 192.168.1.100
+        level: informational
+    
+    - name: Configure VLANs
+      cisco.ios.ios_vlan:
+        vlan_id: 10
+        name: Sales
+        state: present
+    
+    - name: Save the configuration
+      cisco.ios.ios_config:
+        save_when: modified
