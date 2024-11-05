@@ -13,12 +13,6 @@
           - server: 192.168.0.1
           - source_interface: Loopback0
     
-    - name: Set interface descriptions
-      cisco.ios.ios_interface:
-        name: Ethernet0/0
-        description: 'Uplink to ISP'
-        enabled: true
-    
     - name: Configure SNMP community string
       cisco.ios.ios_snmp:
         community:
