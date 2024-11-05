@@ -16,8 +16,8 @@
     - name: Configure SNMP community string
       cisco.ios.ios_snmp:
         community:
-          name: public
-          mode: ro
+          - name: public
+          - mode: ro
     
     - name: Configure logging
       cisco.ios.ios_logging:
